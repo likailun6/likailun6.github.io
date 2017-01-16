@@ -1,0 +1,60 @@
+/**
+ * 运动框架
+ * Created by zhanghaibin on 2016/11/11.
+ */
+
+
+function getStyle(obj,name){
+    if(obj.currentStyle){
+        return obj.currentStyle[name];
+    }
+    else{
+        return getComputedStyle(obj,false)[name];
+    }
+}
+
+//json:{width:400,heigth:500}
+function move(obj,json,duration,complete){
+    clearInterval(obj.timer);
+    //开始位置
+    var start = {};
+    //距离
+    var dis = {};
+    for(var name in json){
+        //name   'width' 'height'
+        //json[name] 400   400
+        start[name] = parseFloat(getStyle(obj,name));
+        if(name == 'opacity' && !obj.addEventListener){
+            start[name] *= 100;
+        }
+        dis[name] = json[name] - start[name];
+
+    }
+
+    //总次数
+    var count = Math.floor(duration / 30);
+    var n = 0; //当前次数
+    obj.timer = setInterval(function(){
+        n++;
+
+        for(var name in json){
+            var a = 1 - n / count;
+            var current = start[name] + dis[name] * (1-a*a*a);
+            if(name == 'opacity'){
+                obj.style.opacity =current;
+                if(!obj.addEventListener){
+                    obj.style.filter = 'alpha(opacity='+ current +')';
+                }
+            }
+            else{
+                obj.style[name] = current + 'px';
+            }
+        }
+
+        if(n == count){
+            clearInterval(obj.timer);
+                complete && complete();
+
+        }
+    },30);
+}

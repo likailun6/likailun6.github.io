@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>凯伦-自动播选项卡</title>
+    <style>
+        #box div{
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000000;
+            display:none;
+        }
+        #box .on{
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oBox = document.getElementById('box');
+            var aBtn = oBox.getElementsByTagName('input');
+            var aDiv = oBox.getElementsByTagName('div');
+
+            var iNow = 0;
+            for(var i = 0; i<aBtn.length;i++){
+                aBtn[i].index = i;
+                aBtn[i].onclick = function(){
+                    iNow = this.index;
+                    tab();
+                };
+            }
+
+            function tab(){
+                for(var i = 0; i< aBtn.length; i++){
+                    aBtn[i].className = '';
+                    aDiv[i].style.display = 'none';
+                }
+                aBtn[iNow].className = 'on';
+                aDiv[iNow].style.display = 'block';
+            }
+            //后一个
+            function next(){
+                iNow++;
+                if (iNow >= aBtn.length){
+                    iNow = 0;
+                }
+                tab();
+            };
+
+            setInterval(next,1000)
+        };
+    </script>
+</head>
+<body>
+<div id="box">
+    <input type="button" class="on" value="体育">
+    <input type="button" value="娱乐">
+    <input type="button" value="新闻">
+    <input type="button" value="动漫">
+    <div style="display:block;">篮球，足球，羽毛球</div>
+    <div>八卦，人气，明星</div>
+    <div>美国，中国，法国</div>
+    <div>死神，火影，海贼王</div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

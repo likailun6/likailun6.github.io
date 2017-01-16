@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社--http://www.zhinengshe.com</title>
+    <style>
+        body{
+            background:#000;
+            text-align: center;
+            font-size: 30px;
+            padding:100px;
+            color:#fff;
+            font-family: 微软雅黑;
+        }
+    </style>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        function toDou(n){
+            return n<10?'0'+n:''+n;
+        }
+        $(function () {
+            var oDate = new Date();
+            oDate.setFullYear(2017,0,27);
+            oDate.setHours(0,0,0,0);
+            //oDate.getTime();
+
+            function clock(){
+                var nowDate = new Date();
+                var dis = parseInt((oDate.getTime() - nowDate.getTime())/1000);
+
+                var d = parseInt(dis /(24*60*60));
+                dis %= (24*60*60);
+                var h = parseInt(dis / (60 * 60));
+                dis %= (60*60);
+                var m = parseInt(dis / 60);
+                dis %= 60;
+
+                var strDate = toDou(d) + '天'+toDou(h)+'小时'+toDou(m)+'分钟'+toDou(dis)+'秒';
+                $('span').html(strDate);
+            }
+            clock();
+            setInterval(clock,1000);
+
+        });
+    </script>
+</head>
+<body>
+距离过年还有：
+<span>20天3小时9分钟10秒</span>
+
+</body>
+</html>
+
+
+
+
+
+

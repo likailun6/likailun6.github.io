@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	font-size:12px;
+	padding:0;
+	margin:0;	
+}
+body, p, ul, dl, ol, span, a, i, b,{
+	margin:0;
+	padding:0;	
+}
+h1, h2, h3, h4, h5, h6, b, p{
+	font-weight:normal;
+	list-style:none;	
+}
+i{
+	font-style:normal;	
+	}
+ul, ol, dl{
+	list-style:none;	
+}
+a{
+	color:#000;
+	text-decoration:none;	
+}
+.clearfix:after{
+	display:block;
+	content:"";
+	clear:both;	
+}
+.clearfix{
+	zoom:1;	
+}
+.wrap{
+	width:987px;
+	margin:0 auto;	
+	}
+.kwrap{
+	width:965px;
+	margin:0 auto;	
+	}
+img{
+	display:block;	
+	}
+.kfl{
+	float:left;	
+	}
+.kfr{
+	float:right;	
+	}
+input{
+	outline:none;	
+	}
+
+
+
+
+
+
+
+
+
+
+
+

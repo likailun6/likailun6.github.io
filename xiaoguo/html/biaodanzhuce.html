@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社--http://www.zhinengshe.com</title>
+    <style>
+        .ok{
+            border: 1px solid green;
+        }
+        .err{
+            border:1px solid red
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var reTel = /^(0[1-9]\d{1,2}\-)?[1-9]\d{6,7}$/;
+	        var rePhone = /^1[345789]\d{9}$/;
+	        var reMail = /^\w{1,30}@[0-9a-z\-]{2,20}(\.[a-z1-9]{2,3}){1,2}$/;
+	        var reAge = /^(1[89])|([2-9]\d)|(100)$/;
+
+
+            var oBtn = document.getElementById('btn1');
+            var oTPhone = document.getElementById('tPhone');
+            var oMail = document.getElementById('tMail');
+            var oForm = document.getElementById('form1');
+
+            oForm.onsubmit = function(){
+                var isOk = true;
+                //手机号验证
+                if(rePhone.test(oTPhone.value)){
+                    oTPhone.className = 'ok';
+                }
+                else{
+                    oTPhone.className = 'err';
+                    isOk = false;
+                }
+                //邮箱验证
+                if(reMail.test(oMail.value)){
+                    oMail.className = 'ok';
+                }
+                else{
+                    oMail.className = 'err';
+                    isOk = false;
+                }
+                return isOk;
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<form action="http://www.baidu.com" id="form1" >
+    用户注册：
+    <hr>
+    <table style="border: 1px">
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" name="tUser"></td>
+        </tr>
+        <tr>
+            <td>手机号：</td>
+            <td><input type="text" id="tPhone"></td>
+        </tr>
+        <tr>
+            <td>固话：</td>
+            <td><input type="text" name="tTel"></td>
+        </tr>
+        <tr>
+            <td>邮箱：</td>
+            <td><input type="text" id="tMail" ></td>
+        </tr>
+        <tr>
+            <td>年龄：</td>
+            <td><input type="text" name="tAge"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center"><input type="submit" value="提交" id="btn1"></td>
+            
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

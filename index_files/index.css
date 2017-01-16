@@ -274,7 +274,7 @@ h2 {
 .home_head img {
     width: 150px;
     height: 150px;
-    border-radius: 75px;
+    border-radius: 30px;
     position: absolute;
     transition: all 0.5s linear;
 }
@@ -540,7 +540,7 @@ h2 {
     margin: 28px auto;
     width: 20px;
     height: 20px;
-    background: url('../images/icon.png') no-repeat;
+    /*background: ;*/
     -webkit-transition-duration: 1s;
     transition-duration: 1s;
 }
@@ -657,20 +657,23 @@ dd a:hover {
     float: left;
     width: 900px;
     height: 300px;
-    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
 .bg1 {
-    background: url("../images/t1.jpg");
+    background:url("startbg.jpg") no-repeat center;
+    background-size:100% ;
 }
 
 .bg2 {
-    background: url("../images/t2.jpg");
+    background:url("timg.jpg") no-repeat center;
+    background-size:100% 260px;
 }
 
 .bg3 {
-    background: url("../images/t3.jpg");
+    background:url("timg%20(1).jpg") no-repeat center;
+    background-size:100%  260px;
 }
 
 .js_list_left {
@@ -736,7 +739,7 @@ dd a:hover {
 #js_timeline {
     margin: 10px auto;
     width: 800px;
-    background: url(../images/timeline.png) no-repeat center center;
+    background:url("timeline.png") no-repeat center;
 }
 
 #js_timeline div {
@@ -958,6 +961,7 @@ dd a:hover {
 }
 
 .demo_list span {
+    opacity: 0.8;
     position: absolute;
     top: -200px;
     left: 0;

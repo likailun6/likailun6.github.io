@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>凯伦-用户注册</title>
+    <style>
+        .ok{
+            border: 1px solid green;
+        }
+        .err{
+            border:1px solid red
+        }
+    </style>
+    <script>
+    var reJson = {
+        tPhone:/^1[345789]\d{9}$/,
+        tMail:/^\w{1,30}@[0-9a-z\-]{2,20}(\.[a-z1-9]{2,3}){1,2}$/,
+        tAge:/^((1[89])|([2-9]\d)|(100))$/,
+        tTel:/^(0[1-9]\d{1,2}\-)?[1-9]\d{6,7}$/
+    };
+
+    function checkForm(formId){
+        var OForm = document.getElementById(formId);
+        var aInput = OForm.getElementsByTagName('input');
+        OForm.onsubmit = function(){
+            var isOk = true;
+            for(var i = 0; i<aInput.length; i++){
+                if(reJson[aInput[i].name]){
+                    if(reJson[aInput[i].name].test(aInput[i].value)){
+                        //符合要求
+                        aInput[i].className = 'ok';
+                    }
+                    else{
+                        aInput[i].className = 'err';
+                        isOk = false;
+                    }
+                }
+            }
+
+            return isOk;
+        };
+
+
+    }
+
+    window.onload = function(){
+        checkForm('form1');
+    }
+</script>
+</head>
+<body>
+<form action="http://www.baidu.com" id="form1" >
+    用户注册：
+    <hr>
+    <table style="border: 1px">
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" name="tUser"></td>
+        </tr>
+        <tr>
+            <td>手机号：</td>
+            <td><input type="text" name="tPhone"></td>
+        </tr>
+        <tr>
+            <td>固话：</td>
+            <td><input type="text" name="tTel"></td>
+        </tr>
+        <tr>
+            <td>邮箱：</td>
+            <td><input type="text" name="tMail" ></td>
+        </tr>
+        <tr>
+            <td>年龄：</td>
+            <td><input type="text" name="tAge"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center"><input type="submit" value="提交" id="btn1"></td>
+            
+        </tr>
+    </table>
+    <p>红色为不能通过</p>
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

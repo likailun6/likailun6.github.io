@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>凯伦-延迟选项卡</title>
+    <style>
+        #box div{
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000000;
+            display:none;
+        }
+        #box .on{
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oBox = document.getElementById('box');
+            var aBtn = oBox.getElementsByTagName('input');
+            var aDiv = oBox.getElementsByTagName('div');
+            var timer;
+            for(var i = 0; i<aBtn.length;i++){
+                aBtn[i].index = i;
+                aBtn[i].onmouseover = function(){
+                    var _this = this;
+                    timer = setTimeout(function(){
+                        for(var i = 0; i< aBtn.length; i++){
+                            aBtn[i].className = '';
+                            aDiv[i].style.display = 'none';
+                        }
+                        _this.className = 'on';
+                        aDiv[_this.index].style.display = 'block';
+
+                    },200);
+
+                };
+                aBtn[i].onmouseout = function(){
+                    clearTimeout(timer);
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="box">
+    <input type="button" class="on" value="体育">
+    <input type="button" value="娱乐">
+    <input type="button" value="新闻">
+    <div style="display:block;">篮球，足球，羽毛球</div>
+    <div>八卦，人气，明星</div>
+    <div>美国，中国，法国</div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>凯伦-简易留言板</title>
+    <style>
+        div{
+            width: 100%;
+            height: 30px;
+            background: red;
+            margin: 5px;
+            float:left;
+
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var oBtn = document.getElementById('btn1');
+            var oUL = document.getElementById('ul1');
+            var oT = document.getElementById('txt1');
+
+            oBtn.onclick = function(){
+                //创建li，并加到ul里
+                var oLI = document.createElement('li');
+                oLI.innerHTML = oT.value + '<a href="javascript:;">删除</a>';
+                //oUL.appendChild(oLI);
+                var oFirst = oUL.firstElementChild || oUL.firstChild;
+                oUL.insertBefore(oLI,oFirst);
+                //实现隐藏功能
+                var oLink = oLI.children[0];
+                oLink.onclick = function(){
+                    //this.parentNode.style.display = 'none';
+                    oUL.removeChild(oLI);
+                };
+                //清空文本框
+                oT.value = '';
+            };
+
+
+
+        };
+    </script>
+</head>
+<body>
+留言内容：<input type="text" id="txt1">
+<input type="button" value="留言" id="btn1">
+<ul id="ul1">
+
+</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社--http://www.zhinengshe.com</title>
+    <style>
+        div{
+            width: 270px;
+            height: 129px;
+            margin: 50px  auto;
+        }
+        *{ list-style:none; margin:0; padding:0;}
+        body{ text-align:center;}
+        #t1{ width:400px; height:30px; line-height:30px; font-size:20px;}
+        #ul1{ width:400px; margin:0 auto;}
+        #ul1 li{ width:400px; border-bottom:1px dashed #000; line-height:30px; height:30px; text-align:left;}
+    </style>
+
+
+    <script>
+        /*var a = 10;
+        alert('a' in window);*/
+
+
+
+        window.onload = function(){
+            var oT = document.getElementById('t1');
+
+            oT.onkeyup = function(){
+                var fnName = 'show'+Math.random();
+                fnName = fnName.replace('.','');
+                window[fnName] = function(json) {
+                    var oUl = document.getElementById('ul1');
+                    oUl.innerHTML = '';
+                    for(var i = 0; i < json.s.length; i++){
+                        var oLi = document.createElement('li');
+                        oLi.innerHTML = json.s[i];
+                        oUl.appendChild(oLi);
+                    }
+                }
+
+                var oS = document.createElement('script');
+                oS.src = 'http://suggestion.baidu.com/su?wd='+oT.value+'&cb='+fnName;
+                //show({q:"j",p:false,s:["京东","京东商城","java","jd","锦绣未央","今夜百乐门","建设银行","今日头条","交通银行","计算器"]});
+
+                //document.head.appendChild(oS);
+                var oHead = document.getElementsByTagName('head')[0];
+                oHead.appendChild(oS);
+
+
+            }
+        };
+    </script>
+
+</head>
+<body>
+<div>
+    <img hidefocus="true" src="img/bd_logo1.png" width="270" height="129"></div>
+
+
+<input type="text" id="t1">
+<ul id="ul1">
+</ul>
+
+
+
+</body>
+</html>

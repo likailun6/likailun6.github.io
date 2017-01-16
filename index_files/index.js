@@ -1,4 +1,81 @@
 ready(function(){
+  
+        $('#section_wrap').fullpage({
+            anchors: ['1', '2', '3', '4', '5', 'footer'],
+            'navigation': true,
+            'resize': false,
+            'verticalCentered': false
+        });
+        for (var i = 0; i < 5; i++) {
+            $('#fp-nav ul li').eq(i).addClass('li_' + i)
+        }
+
+        // 第二屏我的专业技能
+        $(".skill_list b").click(function () {
+            $(".skill_int").each(function () {
+                if ($(this).is(":visible")) {
+                    $(this).slideUp(200);
+                    $(this).prev().removeClass("skill_flag_scale");
+                }
+            });
+            if ($(this).siblings(".skill_int").is(":hidden")) {
+                $(this).siblings(".skill_int").slideDown(600);
+                $(this).siblings(".skill_flag").addClass("skill_flag_scale");
+            } else {
+                $(this).siblings(".skill_int").slideUp(200);
+                $(this).siblings(".skill_flag").removeClass("skill_flag_scale");
+            }
+        });
+
+        //第四屏--我的特效切换
+
+        var page = 1;
+        $("#js_timeline a").click(function () {
+            $(".js_list_content").stop(true, false).animate({left: -$(".js_list").width() * $(this).index()}, 1000);
+            page = $(this).index() + 1;
+        })
+        //上一个
+        $('#prev').click(function () {
+            if (!$(".js_list_content").is(":animated")) {
+                if (page == 1) {
+                    $(".js_list_content").animate({
+                        left: "+=50"
+                    }, 200, function () {
+                        $(this).animate({
+                            left: "-=50"
+                        }, 200);
+                    });
+                    return false;
+                }
+                $(".js_list_content").animate({
+                    left: "+=" + $(".js_list").width()
+                });
+                page--;
+            }
+        });
+
+        //下一个
+        $('#next').click(function () {
+            if (!$(".js_list_content").is(":animated")) {
+                if (page == 3) {
+                    $(".js_list_content").animate({
+                        left: "-=50"
+                    }, 200, function () {
+                        $(this).animate({
+                            left: "+=50"
+                        }, 200);
+                    });
+                    return;
+                }
+                $(".js_list_content").animate({
+                    left: "-=" + $(".js_list").width()
+                });
+                page++;
+            }
+        });
+   
+
+
     //第五屏--我的作品（拉钩效果）
     ;(function(){
         var oUl=document.querySelector('#demo_content');

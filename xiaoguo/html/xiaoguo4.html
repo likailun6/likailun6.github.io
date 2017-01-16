@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>凯伦-瀑布流</title>
+    <style>
+        *{margin:0;padding:0;list-style:none;}
+        ul{
+            width: 200px;
+            border:1px solid #000;
+            float:left;
+            margin:10px;
+        }
+        li{
+            width: 180px;
+            height: 200px;
+            background: red;
+            margin:10px;
+        }
+    </style>
+    <script>
+        function rnd(n,m){return parseInt(Math.random()*(m-n)) + n;}
+        window.onload = function(){
+            var aUl = document.getElementsByTagName('ul');
+
+            function createLI(){
+                var oLi = document.createElement('li');
+                oLi.style.height = rnd(100,500) + 'px';
+                oLi.style.background = 'rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';
+                return oLi;
+            }
+            function createLI20(){
+                for(var i = 0; i < 20; i++){
+                    var oLi = createLI();
+                    var arrUl = [];
+                    for(var j = 0; j<aUl.length; j++){
+                        arrUl.push(aUl[j]);
+                    }
+
+                    arrUl.sort(function(n1,n2){
+                        return n1.offsetHeight - n2.offsetHeight;
+                    });
+                    arrUl[0].appendChild(oLi)
+                }
+            }
+
+            //如果走到最后了，再弄20个li，加到页面上
+            createLI20();
+            //当整个页面的高度 >  可视区+滚动距离
+            //alert(document.documentElement.scrollHeight);
+
+            window.onscroll = function(){
+                //可视区高度
+                var clientH = document.documentElement.clientHeight;
+                //滚动距离
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+                //可视区底边
+                var clientBottom = clientH + scrollTop;
+                //页面内容高度
+                var pageHeight = document.documentElement.scrollHeight;
+
+                if(pageHeight <= clientBottom){
+
+                    createLI20();
+                }
+
+            };
+
+
+
+
+        };
+    </script>
+</head>
+<body>
+<ul>
+</ul>
+<ul></ul>
+<ul></ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
