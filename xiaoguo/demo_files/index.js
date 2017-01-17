@@ -1,6 +1,4 @@
-/**
- * Created by Administrator on 2016/2/15.
- */
+
 window.onload=function(){
     var aLi=document.getElementById('cirle').getElementsByTagName('li');
 
